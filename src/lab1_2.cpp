@@ -37,11 +37,16 @@ lab1_2::lab1_2()
     groupBox = new QGroupBox(tr("&PRN generator"));
 
     urandom_check = new QRadioButton(tr("/dev/urandom"));
-    urandom_check->setChecked(true);
-
     random_check = new QRadioButton(tr("/dev/random"));
-
     rand_check = new QRadioButton(tr("rand(time)"));
+
+    #ifdef linux
+        urandom_check->setChecked(true);
+    #else
+        urandom_check->setEnabled(false);
+        random_check->setEnabled(false);
+        rand_check->setChecked(true);
+    #endif
 
     generator_spb = new QSpinBox(this);
     generator_spb->setMinimum(100);

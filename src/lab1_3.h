@@ -57,10 +57,10 @@ private:
 public:
     RealData(size_t size) : d_size(size) {}
 
-    virtual QwtData *copy() const { return new RealData(d_size); }
-    virtual size_t size() const { return d_size; }
-    virtual double x(size_t i) const { return (0.001 * i); }
-    virtual double y(size_t i) const { return 1/sqrt(x(i)); }
+    QwtData *copy() const { return new RealData(d_size); }
+    size_t size() const { return d_size; }
+    double x(size_t i) const { return (0.001 * i); }
+    double y(size_t i) const { return 1/sqrt(x(i)); }
 };
 /*
 class VectorData: public QwtData
